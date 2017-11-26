@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="05d252ae-b10a-4e6e-a938-40312378394c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Registration.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Util.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Viewable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Admin.java" afterPath="$PROJECT_DIR$/src/Admin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executor.java" afterPath="$PROJECT_DIR$/src/Executor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Grade.java" afterPath="$PROJECT_DIR$/src/Grade.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainTester.java" afterPath="$PROJECT_DIR$/src/MainTester.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Manager.java" afterPath="$PROJECT_DIR$/src/Manager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Person.java" afterPath="$PROJECT_DIR$/src/Person.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Student.java" afterPath="$PROJECT_DIR$/src/Student.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Teacher.java" afterPath="$PROJECT_DIR$/src/Teacher.java" />
-    </list>
+    <list default="true" id="05d252ae-b10a-4e6e-a938-40312378394c" name="Default" comment="" />
     <ignored path="projOOP.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/bin/" />
