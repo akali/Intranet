@@ -15,7 +15,7 @@ public class Manager extends Employee {
         return type;
     }
     public void setType(ManagerType type) {
-    	this.type = type
+    	this.type = type;
     }
     public boolean approveRegistration(Course c, Student s) {
         return false;
