@@ -21,5 +21,10 @@ public class Executor extends Employee {
     public int viewAcceptedOrders() {
         return 0;
     }
+
+    @Override
+    public void view() {
+
+    }
 }
 

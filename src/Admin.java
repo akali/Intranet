@@ -1,3 +1,4 @@
+import java.util.Vector;
 
 public class Admin extends Employee {
     public Admin(String id, String password, String name,int salary) {
@@ -51,6 +52,24 @@ public class Admin extends Employee {
     }
 
     public void updateExecutor(int id, int e) {
+    }
+
+    @Override
+    public void view() {
+        Vector<String> actions = new Vector<>();
+        actions.add("View Registrations");
+        actions.add("Delete");
+        actions.add("Create");
+        int actionNum = Util.pickView(actions, "Action");
+        if (actionNum == 1) {
+            // System.out.println("Add");
+        } else {
+            if (actionNum == 2) {
+                System.out.println("Delete");
+            } else {
+                System.out.println("Create");
+            }
+        }
     }
 }
 

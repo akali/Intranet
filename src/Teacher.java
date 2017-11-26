@@ -22,7 +22,7 @@ public class Teacher extends Employee {
     	this.courses = courses;
     }
     
-    public void setStudents(HashMap<Course,TreeSet<Students>> students) {
+    public void setStudents(HashMap<Course,TreeSet<Student>> students) {
     	this.students = students;
     }
     
@@ -32,7 +32,7 @@ public class Teacher extends Employee {
     public TreeSet<Course> getCourse(){
     	return this.courses;
     }
-    public Hashmap<Course, TreeSet<Student>> getStudents(){
+    public HashMap<Course, TreeSet<Student>> getStudents(){
     	return this.students;
     }
 
@@ -55,5 +55,9 @@ public class Teacher extends Employee {
     public void sendOrder(Order o, Executor e) {
     }
 
+    @Override
+    public void view() {
+
+    }
 }
 

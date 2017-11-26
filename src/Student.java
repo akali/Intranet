@@ -14,7 +14,7 @@ public class Student extends Person {
     public void registerForCourse(Course c) {
     }
 
-    public TreeSet<Course> getCourses(Course c) {
+    public TreeSet<Course> getCourses() {
         return null;
     }
     public CourseFile getCourseFile(Course c) {
@@ -32,6 +32,15 @@ public class Student extends Person {
 
     public Teacher getTeacher(Course c) {
         return null;
+    }
+
+    @Override
+    public void view() {
+
+    }
+
+    public void setTeacher(Course course, Teacher teacher) {
+        teachers.put(course, teacher);
     }
 }
 

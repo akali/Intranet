@@ -1,7 +1,7 @@
 import java.lang.*;
 import java.util.Objects;
 
-public abstract class Person implements Comparable{
+public abstract class Person implements Comparable, Viewable{
     private String id;
     private String name;
     private String password;

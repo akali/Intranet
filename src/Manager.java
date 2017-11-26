@@ -37,5 +37,10 @@ public class Manager extends Employee {
     public TreeSet<Manager> getManagers() {
         return null;
     }
+
+    @Override
+    public void view() {
+
+    }
 }
 

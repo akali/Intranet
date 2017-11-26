@@ -10,6 +10,5 @@ static int C;
 static int C_minus;
 static int D_plus;
 static int D;
-static int D_minus;
 static int F;
 }
