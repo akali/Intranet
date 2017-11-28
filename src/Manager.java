@@ -39,8 +39,9 @@ public class Manager extends Employee {
     }
 
     @Override
-    public void view() {
+    public boolean view() {
 
+        return false;
     }
 }
 

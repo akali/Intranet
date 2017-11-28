@@ -1,28 +1,32 @@
+import java.util.Arrays;
 import java.util.Vector;
 
 public class Admin extends Employee {
-    public Admin(String id, String password, String name,int salary) {
+    private static Admin INSTANCE = new Admin();
+
+    public Admin(String id, String password, String name, int salary) {
 		super(id, password, name, salary);
-		// TODO Auto-generated constructor stub
 	}
-    private static int studentId;
 
-    private static int teacherId;
-
-    private static int managerId;
-    
-    private static int executorId;
-
-    public Student createStudent(Student e) {
-        return null;
+    private Admin() {
+        super();
     }
 
-    public int createTeacher(int t) {
-        return 0;
+    public static Admin getInstance() {
+        return INSTANCE;
     }
-    public Manager createManager(Manager m) {
-        return null;
+
+    public void createStudent(Student e) {
+
     }
+    public void createTeacher(Teacher t) {
+
+    }
+    public void createManager(Manager m) {
+
+    }
+    public void createAdmin(Admin a) {}
+
     public int createExecutor(int e) {
         return 0;
     }
@@ -36,7 +40,6 @@ public class Admin extends Employee {
     public boolean removeTeacher(int t) {
         return false;
     }
-
 
     public boolean removeExecutor(int e) {
         return false;
@@ -55,21 +58,67 @@ public class Admin extends Employee {
     }
 
     @Override
-    public void view() {
-        Vector<String> actions = new Vector<>();
-        actions.add("View Registrations");
-        actions.add("Delete");
-        actions.add("Create");
-        int actionNum = Util.pickView(actions, "Action");
-        if (actionNum == 1) {
-            // System.out.println("Add");
-        } else {
-            if (actionNum == 2) {
-                System.out.println("Delete");
-            } else {
-                System.out.println("Create");
-            }
+    public boolean view() {
+        Vector<String> actions = new Vector<>
+                (Arrays.asList(new String[]{"Create",
+                        "Update",
+                        "Delete",
+                        "Exit"
+                }));
+        switch (Util.pickView(actions, "action")) {
+            case 1:
+                create();
+                break;
+            case 2:
+                update();
+                break;
+            case 3:
+                delete();
+                break;
+            case 4:
+                return false;
+            default:
+                System.out.println("Incorrect command!");
+                break;
         }
+        return false;
+    }
+
+    public Admin create() {
+        Vector<String> entities = new Vector<>
+                (Arrays.asList(new String[]{"Student",
+                        "Teacher",
+                        "Admin",
+                        "Manager",
+                        "Cancel"
+                }));
+        switch (Util.pickView(entities, "entity")) {
+            case 1:
+                Student s = (Student) Student.getInstance().create(new Student());
+                createStudent(s);
+                break;
+            case 2:
+                Teacher t = (Teacher) Teacher.getInstance().create(new Teacher());
+                createTeacher(t);
+                break;
+            case 3:
+                Admin a = (Admin) Admin.getInstance().create(new Admin());
+                createAdmin(a);
+                break;
+        }
+        return null;
+    }
+
+    private Admin createAdmin() {
+        return null;
+    }
+
+    public void delete() {
+
+    }
+
+    public void update() {
+
     }
 }
 

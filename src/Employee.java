@@ -10,6 +10,8 @@ public abstract class Employee extends Person {
 		this.salary = salary;
 	}
 
+    public Employee(){}
+
 
     public int getSalary() {
         return salary;

@@ -53,5 +53,18 @@ public class CourseFile {
      */
     public void setTitle(String title) {
     }
+
+    @Override
+    public String toString() {
+        return "CourseFile{" +
+                "path='" + path + '\'' +
+                ", addDate=" + addDate +
+                ", title='" + title + '\'' +
+                '}';
+    }
+
+    public String pretty() {
+        return toString();
+    }
 }
 

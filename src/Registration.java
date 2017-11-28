@@ -11,7 +11,7 @@ public class Registration {
     private Student student;
     private Course course;
     private Type type;
-    public void addRegitration(Registration registration) {
+    public static void addRegitration(Registration registration) {
         registrations.add(registration);
     }
 

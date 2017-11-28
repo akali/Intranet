@@ -1,10 +1,19 @@
 import java.lang.*;
+import java.util.Arrays;
+import java.util.Vector;
 
 /**
  */
-public class Option {
-    /**
-     */
+public class Option implements Cloneable {
+    public Option(String description) {
+        this.description = description;
+    }
+
+    static Vector<Option> options = new Vector<>(Arrays.asList(
+            new Option("Question 1"),
+            new Option("Question 2"),
+            new Option("Question 3")
+    ));
     private String description;
 
     /**
@@ -35,6 +44,11 @@ public class Option {
      * @param description 
      */
     public void setDescription(String description) {
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
 

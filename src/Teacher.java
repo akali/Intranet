@@ -12,7 +12,11 @@ public class Teacher extends Employee {
     private TreeSet<Course> courses;
 
     private HashMap<Course, TreeSet<Student>> students;
+    private HashMap<Student, Rate> rate = new HashMap<>();
 
+    public void addRate(Student s, Rate t) {
+        rate.put(s, t);
+    }
     
     public void setTeachers(TreeSet<Teacher> teacher) {
     	this.teachers = teachers;
@@ -56,8 +60,17 @@ public class Teacher extends Employee {
     }
 
     @Override
-    public void view() {
+    public boolean view() {
 
+        return false;
+    }
+
+    private static Teacher INSTANCE = new Teacher();
+    public static Teacher getInstance() {
+        return INSTANCE;
+    }
+    public Teacher() {
+        super();
     }
 }
 

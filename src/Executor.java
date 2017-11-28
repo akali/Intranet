@@ -23,8 +23,9 @@ public class Executor extends Employee {
     }
 
     @Override
-    public void view() {
+    public boolean view() {
 
+        return false;
     }
 }
 

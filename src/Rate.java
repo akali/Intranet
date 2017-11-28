@@ -11,6 +11,9 @@ public class Rate {
      * @param o 
      */
     public void addOption(Option o) {
+        options.add(o);
     }
+
+
 }
 
