@@ -1,0 +1,7 @@
+package projectoop;
+
+/**
+ */
+class Report {
+}
+
