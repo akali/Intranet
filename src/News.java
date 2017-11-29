@@ -1,46 +1,73 @@
-import java.lang.*;
-import java.util.Vector;
+package projectoop;
 
-/**
- */
-public class News {
-    /**
-     */
-    private String title;
+import java.io.Serializable;
+import java.util.Date;
+import users.Manager;
 
-    /**
-     */
-    private String description;
+public class News implements Serializable{
 
-    /**
-     */
-    private Manager sender;
+private String title;
+private String text;
+private Date date;
+private Manager sender;
 
-    /**
-     */
-    private DateTime date;
+	
+public News() {}
 
-    /**
-     */
-    private static Vector<News> news;
+ublic String getTitle() {
+return title;
+}
 
-    /**
-     * @return 
-     */
-    public Vector<News> getNews() {
-        return null;
-    }
+	
+public void setTitle(String title) 
+		this.title = title;
+}
 
-    /**
-     * @param n 
-     */
-    public void addNews(News n) {
-    }
+	
+public String getText() {
+return text;
+}
 
-    /**
-     * @param n 
-     */
-    public void removeNews(News n) {
-    }
+	
+public void setText(String text) {
+this.text = text;
+}
+	
+public Date getDate() {
+ return date;
+}
+
+	
+public void setDate(Date date) {
+		this.date = date;
+}
+
+	 
+public Manager getSender() {
+return sender;
+}
+
+	
+public void setSender(Manager sender) {
+this.sender = sender;
+}
+
+	
+public boolean equals(Object obj)
+{
+News news = (News)obj;
+return (news.getText().equals(this.text) && news.getTitle().equals(this.title) && news.getSender().equals(this.sender) && news.getDate().equals(this.date));
+}
+
+	
+public int hashcode() {
+ return super.hashCode();
+}
+	
+@Override
+public String toString() {
+		return String.format("Title: %s\nText: %s\nSender: %s\nDate: %s", title, text, sender.getName() + sender.getLastName(), date);
+}
+
 }
 

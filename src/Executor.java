@@ -1,31 +1,51 @@
-import java.util.TreeSet;
+package projectoop;
 
-public class Executor extends Employee {
-    public Executor(String id, String password, String name, int salary) {
-		super(id, password, name, salary);
-		// TODO Auto-generated constructor stub
+import java.io.Serializable;
+import java.util.Vector;
+public class Executor extends Employee implements Serializable {
+	
+	Vector<Order> orders =  new Vector<Order>();
+
+	
+	public Executor() {
+		super();
 	}
 	
-    private TreeSet<Order> orders;
 
-    private TreeSet<Order> acceptedOrders;
-    
-    private static TreeSet<Executor> executors;
+	public Executor(String name, String email, String surname, String phoneNumber, boolean isWorking,
+			boolean isTeaching, Vector<Order> orders) {
+		super(name, email, surname, phoneNumber, isWorking, isTeaching);
+		this.orders = orders;
+	}
 
-    public boolean acceptOrder(Order o) {
-        return false;
-    }
-    public TreeSet<Order> viewOrders() {
-        return null;
-    }
-    public int viewAcceptedOrders() {
-        return 0;
-    }
 
-    @Override
-    public boolean view() {
+	public Vector<Order> getOrders() {
+		return orders;
+	}
 
-        return false;
-    }
+
+	public void setOrders(Vector<Order> orders) {
+		this.orders = orders;
+	}
+
+
+
+	public String viewOrders() {
+		return "Executor [orders=" + orders + "]";
+	}
+
+
+	public void acceptOrder(Order newOrder) {
+		if(newOrder.isDone == false) {
+			orders.add(newOrder);
+		}
+	}
+
+	
+	public void setSalary(double bonus) {
+		if(orders.size() != 0) {
+			super.setSalary(super.getSalary() + orders.size()*bonus);
+		}
+	}
+	
 }
-

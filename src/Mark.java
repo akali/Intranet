@@ -1,82 +1,91 @@
+package projectoop;
+
 public class Mark {
-private int firstAttestation;
-private int secondAttestation;
-private int final1;
 
-//private Course course;
-private Student student;
-public int points = 0;
-public int mark;
+	
+private double firstAttestation;
+private double secondAttestation;
+private double finalExam;
+private double total;
 
-
-public void setPoints(int points) {
-	this.points = points;
-}
-public double getPoints() {
-	return this.points;
+	public Mark() 
+{
+firstAttestation=-1;
+secondAttestation=-1;
+finalExam=-1;
 }
 
-
-public void setMark(int mark) {
-	this.mark = mark;
-}
-public int getMark() {
-	return this.mark;
-}
-
-public void calculateMark(){
-	if(this.points >= 95){
-        this.mark = Grade.A;
-    }
-	else if(this.points >= 90 && this.points < 95){
-        	this.mark = Grade.A_minus;
-    }
-	else if(this.points >= 85 && this.points < 90){
-        	this.mark = Grade.B_plus;
-    }
-	else if(this.points >= 80 && this.points < 85){
-        	this.mark = Grade.B;
-    }
-	else if(this.points >= 75 && this.points < 80){
-    		this.mark = Grade.B_minus;
-    }
-	else if(this.points >= 70 && this.points < 75){
-			this.mark = Grade.C_plus;
-    }
-	else if(this.points >= 65 && this.points < 70){
-    		this.mark = Grade.C;
-    }
-	else if(this.points >= 60 && this.points < 65){
-			this.mark = Grade.C_minus;
-    }
-	else if(this.points >= 55 && this.points < 60){
-			this.mark = Grade.D_plus;
-    }
-	else if(this.points >= 50 && this.points < 55){
-			this.mark = Grade.D;
-    }
-	else if(this.points < 50 ){
-			this.mark = Grade.F;
-    }
+public String toLetter() {
+if(getTotal()>95) return "A";
+else if(getTotal()>90 && getTotal()<95) return "-A";
+else if(getTotal()>85 && getTotal()<90) return "+B";
+else if(getTotal()>80 && getTotal()<85) return "B";
+else if(getTotal()>75 && getTotal()<80) return "-B";
+else if(getTotal()>70 && getTotal()<75) return "+C";
+else if(getTotal()>65 && getTotal()<70) return "C";
+else if(getTotal()>60 && getTotal()<65) return "-C";
+else if(getTotal()>55 && getTotal()<60) return "D";
+else if(getTotal()>50 && getTotal()<55) return "-D";
+else return "FAIL";
 }
 
-
-public int getfinal1() {
-    return 0;
-}
-public void setfinal1(int final1) {
-}
-public int getSecondAttestation() {
-    return 0;
-}
-public void setSecondAttestation(int secondAttestation) {
-}
-public int getFirstAttestation() {
-    return 0;
-}
-public void setFirstAttestation(int firstAttestation) {
-}
-public void putMark(Teacher t, Mark m) {
-}
+public double getFinalExam() {
+return finalExam;
 }
 
+public double getTotal() {
+return total;
+}
+
+public double getFirstAttestation() {
+if(firstAttestation==-1) return 0;
+else return firstAttestation;
+}
+
+public double  getSecondAttestation() 
+{
+if(secondAttestation==-1) return 0; 
+else return secondAttestation;
+}
+
+	public void addMark(double points) {
+if(getFirstAttestation()==-1) {
+total=+points;
+firstAttestation=points;
+}
+else if(getFirstAttestation()>-1 && getSecondAttestation()==-1) {
+total=+points;
+secondAttestation=points;
+		}
+else if(getFirstAttestation()>-1 && getSecondAttestation()>-1 && getFinalExam()==-1) {
+total=+points;
+finalExam=points;
+}	
+}
+
+	public String toString() 
+
+	{
+
+if(firstAttestation==-1) return "1.0"+"  "+"2.0" + " "+"3.0";
+else if(firstAttestation>-1 && secondAttestation==-1) return"1."+firstAttestation+" " +"2.0"+" "+"3.0";
+else if(firstAttestation>-1 && secondAttestation>-1 && finalExam==-1) return "1."+firstAttestation+" "+"2."+secondAttestation+" "+"3.0";
+else if(firstAttestation>-1 && secondAttestation>-1 && finalExam>-1) return  "1."+firstAttestation+" "+"2."+secondAttestation+" "+"3."+finalExam ;
+else return  "1.0"+"  "+"2.0" + " "+"3.0";
+}
+
+	public double toNumber()
+{
+if(getTotal()>95) return 4.0;
+else if(getTotal()>90 && getTotal()<95) return 3.67;
+else if(getTotal()>85 && getTotal()<90) return 3.33;
+else if(getTotal()>80 && getTotal()<85) return 3.0;
+else if(getTotal()>75 && getTotal()<80) return 2.67;
+else if(getTotal()>70 && getTotal()<75) return 2.33;
+else if(getTotal()>65 && getTotal()<70) return 2.0;
+else if(getTotal()>60 && getTotal()<65) return 1.67;
+else if(getTotal()>55 && getTotal()<60) return 1.33;
+else if(getTotal()>50 && getTotal()<55) return 1.0;
+else return 0;
+}
+	}
