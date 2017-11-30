@@ -1,10 +1,8 @@
 package projectoop;
 
 import java.io.Serializable;
-import java.util.Vector;
 
 public class Registration implements Serializable {
-    public static Vector<Registration> registrations = new Vector<>();
     enum Type {
         ACCEPTED, REJECTED, PENDING
     }
@@ -12,7 +10,7 @@ public class Registration implements Serializable {
     private Course course;
     private Type type;
     public static void addRegistration(Registration registration) {
-        registrations.add(registration);
+        StorageSingletone.getInstance().addRegistration(registration);
     }
 
     public Registration(Student student, Course course) {
@@ -28,9 +26,9 @@ public class Registration implements Serializable {
 
         Registration that = (Registration) o;
 
-        if (student != null ? !student.equals(that.student) : that.student != null) return false;
-        if (course != null ? !course.equals(that.course) : that.course != null) return false;
-        return type == that.type;
+        return (student != null ? student.equals(that.student) : that.student == null) &&
+                (course != null ? course.equals(that.course) : that.course == null) &&
+                type == that.type;
     }
 
     @Override
@@ -39,10 +37,6 @@ public class Registration implements Serializable {
         result = 31 * result + (course != null ? course.hashCode() : 0);
         result = 31 * result + (type != null ? type.hashCode() : 0);
         return result;
-    }
-
-    public static Vector<Registration> getRegistrations() {
-        return registrations;
     }
 
     public Student getStudent() {

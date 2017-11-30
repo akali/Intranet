@@ -1,9 +1,8 @@
 package projectoop;
 
-import java.io.Serializable;
+import java.util.Scanner;
 
-
-public abstract class Employee extends Person {
+public abstract class Employee extends Person implements Comparable<Employee> {
     protected double salary;
 
     public Employee(String login, String password, String name, double salary) {
@@ -38,6 +37,31 @@ public abstract class Employee extends Person {
         long temp;
         temp = Double.doubleToLongBits(salary);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
+    public int compareTo(Employee o) {
+        return Integer.compare(hashCode(), o.hashCode());
+    }
+
+    @Override
+    public void update() {
+        super.update();
+
+        Scanner sc = Util.getReadingScanner();
+
+        System.out.println("Enter desired salary: ");
+        setSalary(sc.nextDouble());
+    }
+
+    @Override
+    public Person create(Person s) {
+        Employee result = (Employee) super.create(s);
+        Scanner sc = Util.getReadingScanner();
+
+        System.out.println("Enter salary: ");
+        result.setSalary(sc.nextDouble());
         return result;
     }
 }

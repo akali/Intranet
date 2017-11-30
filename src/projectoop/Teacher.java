@@ -15,6 +15,10 @@ public class Teacher extends Employee {
     private HashMap<Student, Rate> rate = new HashMap<>();
     private HashSet<Course> courses = new HashSet<>();
 
+    public HashSet<Course> getCourses() {
+        return courses;
+    }
+
     public void addRate(Student s, Rate t) {
         rate.put(s, t);
     }

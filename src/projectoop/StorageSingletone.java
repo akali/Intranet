@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.TreeSet;
 import java.util.Vector;
 
 public class StorageSingletone implements Serializable {
@@ -60,6 +61,10 @@ public class StorageSingletone implements Serializable {
     private HashSet<Executor> executors = new HashSet<>();
     private Vector<Order> orders = new Vector<>();
 
+    private HashSet<Registration> registrations = new HashSet<>();
+
+    private TreeSet<News> news = new TreeSet<>();
+
     public void addOrder(Order o) {
         orders.add(o);
     }
@@ -102,10 +107,46 @@ public class StorageSingletone implements Serializable {
         return login;
     }
 
+    public HashSet<Registration> getRegistrations() {
+        return registrations;
+    }
+
     public void removeEntity(String login) {
         Person p = people.get(login);
+
         getEntitiesSet(p.getClass()).remove(p);
         people.remove(login);
     }
 
+    public void addNews(News n) {
+        news.add(n);
+    }
+
+    public void removeNews(News n) {
+        news.remove(n);
+    }
+
+    public void addRegistration(Registration registration) {
+        registrations.add(registration);
+    }
+
+    public void removeRegistration(Registration picked) {
+        registrations.remove(picked);
+    }
+
+    public HashSet<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public TreeSet<News> getNews() {
+        return news;
+    }
+
+    public HashSet<Student> getStudents() {
+        return students;
+    }
+
+    public HashSet<Course> getCourses() {
+        return courses;
+    }
 }

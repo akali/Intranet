@@ -3,8 +3,32 @@ package projectoop;
 import java.util.*;
 
 public class Student extends Person {
-    private double gpa = 4.0;
+    enum Department {
+        FIT, BS, ISE
+    }
 
+    @Override
+    public Person create(Person s) {
+        Student result = (Student) super.create(s);
+        result.department = Department.values()[Util.pickView("department",
+                "FIT",
+                "BS",
+                "ISE") - 1];
+        return result;
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        department = Department.values()[Util.pickView("department",
+                "FIT",
+                "BS",
+                "ISE") - 1];
+    }
+
+    private double gpa = 0.0;
+
+    private Department department;
     private HashSet<Course> current = new HashSet<>();
     private HashSet<Course> passed = new HashSet<>();
 
@@ -62,11 +86,19 @@ public class Student extends Person {
                 "Register to course",
                 "View transcript",
                 "Exit")) {
-            case 1: viewCourses(); break;
-            case 2: registerCourse(); break;
-            case 3: viewTranscript(); break;
-            case 4: return false;
-            default: break;
+            case 1:
+                viewCourses();
+                break;
+            case 2:
+                registerCourse();
+                break;
+            case 3:
+                viewTranscript();
+                break;
+            case 4:
+                return false;
+            default:
+                break;
         }
         return true;
     }
@@ -75,6 +107,7 @@ public class Student extends Person {
     }
 
     private void registerCourse() {
+        StorageSingletone.getInstance().getCourses().stream().filter()
     }
 
     @Override
@@ -86,6 +119,7 @@ public class Student extends Person {
         Student student = (Student) o;
 
         if (Double.compare(student.gpa, gpa) != 0) return false;
+        if (department != student.department) return false;
         if (current != null ? !current.equals(student.current) : student.current != null) return false;
         if (passed != null ? !passed.equals(student.passed) : student.passed != null) return false;
         if (marks != null ? !marks.equals(student.marks) : student.marks != null) return false;
@@ -98,6 +132,7 @@ public class Student extends Person {
         long temp;
         temp = Double.doubleToLongBits(gpa);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (department != null ? department.hashCode() : 0);
         result = 31 * result + (current != null ? current.hashCode() : 0);
         result = 31 * result + (passed != null ? passed.hashCode() : 0);
         result = 31 * result + (marks != null ? marks.hashCode() : 0);
