@@ -2,27 +2,25 @@ package projectoop;
 
 import java.io.Serializable;
 import java.lang.*;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Vector;
 
 public class Course implements Serializable {
-    private String name;
+    private String name, id;
     private Teacher teacher;
-    private Vector<Course> preprequesites;
+    private HashSet<Student> students = new HashSet<>();
+    private HashSet<Course> prerequisites = new HashSet<>();
     private CourseFile courseFiles;
     private int creditsNumber;
-    private String id;
-    public int getCreditsNumber() {
-        return 0;
-    }
 
-    public CourseFile getCourseFiles() {
-        return courseFiles;
-    }
+    public Course() { }
 
-    public void setCourseFiles(CourseFile courseFiles) {
-        this.courseFiles = courseFiles;
-    }
-    public void setCreditsNumber(int creditsNumber) {
+    public Course(String name, String id, Teacher teacher, int creditsNumber) {
+        this.name = name;
+        this.id = id;
+        this.teacher = teacher;
+        this.creditsNumber = creditsNumber;
     }
 
     public String getName() {
@@ -33,6 +31,14 @@ public class Course implements Serializable {
         this.name = name;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public Teacher getTeacher() {
         return teacher;
     }
@@ -41,20 +47,36 @@ public class Course implements Serializable {
         this.teacher = teacher;
     }
 
-    public Vector<Course> getPreprequesites() {
-        return preprequesites;
+    public HashSet<Student> getStudents() {
+        return students;
     }
 
-    public void setPreprequesites(Vector<Course> preprequesites) {
-        this.preprequesites = preprequesites;
+    public void addStudent(Student student) {
+        this.students.add(student);
     }
 
-    public String getId() {
-        return id;
+    public HashSet<Course> getPrerequisites() {
+        return prerequisites;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void addPrerequisite(Course c) {
+        this.prerequisites.add(c);
+    }
+
+    public CourseFile getCourseFiles() {
+        return courseFiles;
+    }
+
+    public void setCourseFiles(CourseFile courseFiles) {
+        this.courseFiles = courseFiles;
+    }
+
+    public int getCreditsNumber() {
+        return creditsNumber;
+    }
+
+    public void setCreditsNumber(int creditsNumber) {
+        this.creditsNumber = creditsNumber;
     }
 
     @Override
@@ -66,21 +88,23 @@ public class Course implements Serializable {
 
         if (creditsNumber != course.creditsNumber) return false;
         if (name != null ? !name.equals(course.name) : course.name != null) return false;
+        if (id != null ? !id.equals(course.id) : course.id != null) return false;
         if (teacher != null ? !teacher.equals(course.teacher) : course.teacher != null) return false;
-        if (preprequesites != null ? !preprequesites.equals(course.preprequesites) : course.preprequesites != null)
+        if (students != null ? !students.equals(course.students) : course.students != null) return false;
+        if (prerequisites != null ? !prerequisites.equals(course.prerequisites) : course.prerequisites != null)
             return false;
-        if (courseFiles != null ? !courseFiles.equals(course.courseFiles) : course.courseFiles != null) return false;
-        return id != null ? id.equals(course.id) : course.id == null;
+        return courseFiles != null ? courseFiles.equals(course.courseFiles) : course.courseFiles == null;
     }
 
     @Override
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (id != null ? id.hashCode() : 0);
         result = 31 * result + (teacher != null ? teacher.hashCode() : 0);
-        result = 31 * result + (preprequesites != null ? preprequesites.hashCode() : 0);
+        result = 31 * result + (students != null ? students.hashCode() : 0);
+        result = 31 * result + (prerequisites != null ? prerequisites.hashCode() : 0);
         result = 31 * result + (courseFiles != null ? courseFiles.hashCode() : 0);
         result = 31 * result + creditsNumber;
-        result = 31 * result + (id != null ? id.hashCode() : 0);
         return result;
     }
 }

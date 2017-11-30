@@ -46,6 +46,11 @@ public class Executor extends Employee {
         return true;
     }
 
+    @Override
+    public double getSalary() {
+        return orders.size() * 1000 + super.getSalary();
+    }
+
     private void viewAcceptedOrders() {
         int num = Util.pickView(orders, "order") - 1;
         if (num < 0 || num >= orders.size()) {

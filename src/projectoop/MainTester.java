@@ -12,7 +12,7 @@ public class MainTester {
 
         System.out.println(storage);
 
-        init();
+        // init();
 
         Scanner sc = Util.getReadingScanner();
 

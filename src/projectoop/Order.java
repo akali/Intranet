@@ -1,6 +1,7 @@
 package projectoop;
 
 import java.io.Serializable;
+import java.util.Scanner;
 
 /**
  * Created by aqali on 29.11.2017.
@@ -9,6 +10,13 @@ public class Order implements Serializable {
     private Employee sender;
     private String message;
     private Type type = Type.PENDING;
+
+    public static Order create(Teacher teacher) {
+        Scanner sc = Util.getReadingScanner();
+        String message = Util.askGet(sc, "Enter message: ");
+        return new Order(teacher, message);
+    }
+
     enum Type {
         ACCEPTED, REJECTED, PENDING
     }

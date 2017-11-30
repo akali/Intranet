@@ -60,6 +60,10 @@ public class StorageSingletone implements Serializable {
     private HashSet<Executor> executors = new HashSet<>();
     private Vector<Order> orders = new Vector<>();
 
+    public void addOrder(Order o) {
+        orders.add(o);
+    }
+
     public Vector<Order> getOrders() {
         return orders;
     }

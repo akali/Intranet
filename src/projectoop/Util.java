@@ -58,4 +58,12 @@ public class Util {
     public static Scanner getReadingScanner() {
         return readingScanner;
     }
+
+    public static Object getPicked(HashSet s, int num) {
+        Iterator it = s.iterator();
+        while (it.hasNext() && num-- > 0) {
+            it.next();
+        }
+        return it.next();
+    }
 }

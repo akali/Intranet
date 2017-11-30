@@ -2,16 +2,16 @@ package projectoop;
 
 import java.io.Serializable;
 
-public class Mark implements Serializable {
+public class Mark implements Serializable, Viewable {
     private double firstAttestation;
     private double secondAttestation;
     private double finalExam;
     private double total;
 
     public Mark() {
-        firstAttestation = -1;
-        secondAttestation = -1;
-        finalExam = -1;
+        firstAttestation = 0;
+        secondAttestation = 0;
+        finalExam = 0;
     }
 
     @Override
@@ -87,17 +87,6 @@ public class Mark implements Serializable {
         }
     }
 
-    public String toString() {
-        if (firstAttestation == -1) return "1.0" + "  " + "2.0" + " " + "3.0";
-        else if (firstAttestation > -1 && secondAttestation == -1)
-            return "1." + firstAttestation + " " + "2.0" + " " + "3.0";
-        else if (firstAttestation > -1 && secondAttestation > -1 && finalExam == -1)
-            return "1." + firstAttestation + " " + "2." + secondAttestation + " " + "3.0";
-        else if (firstAttestation > -1 && secondAttestation > -1 && finalExam > -1)
-            return "1." + firstAttestation + " " + "2." + secondAttestation + " " + "3." + finalExam;
-        else return "1.0" + "  " + "2.0" + " " + "3.0";
-    }
-
     public double toNumber() {
         if (getTotal() > 95) return 4.0;
         else if (getTotal() > 90 && getTotal() < 95) return 3.67;
@@ -110,5 +99,47 @@ public class Mark implements Serializable {
         else if (getTotal() > 55 && getTotal() < 60) return 1.33;
         else if (getTotal() > 50 && getTotal() < 55) return 1.0;
         else return 0;
+    }
+
+    @Override
+    public boolean view() {
+        System.out.println(pretty());
+        int num = Util.pickView("item",
+                "First Attestation",
+                "Second Attestation",
+                "Final Exam",
+                "Cancel");
+        double d = Util.getReadingScanner().nextDouble();
+        switch (num) {
+            case 1:
+                firstAttestation = d;
+                break;
+            case 2:
+                secondAttestation = d;
+                break;
+            case 3:
+                finalExam = d;
+                break;
+            case 4:
+                break;
+            default:
+                System.out.println("Wrong input");
+                break;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Mark{" +
+                "firstAttestation=" + firstAttestation +
+                ", secondAttestation=" + secondAttestation +
+                ", finalExam=" + finalExam +
+                ", total=" + total +
+                '}';
+    }
+
+    public String pretty() {
+        return toString();
     }
 }

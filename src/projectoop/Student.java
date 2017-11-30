@@ -106,19 +106,20 @@ public class Student extends Person {
     }
 
     private void viewCourses() {
-        Vector<Course> list = new Vector<>(Arrays.asList((Course[]) current.toArray()));
+        Vector<Object> list = new Vector<>(Arrays.asList(current.toArray()));
         int num = Util.pickView(list, "course") - 1;
         if (num >= list.size() || num < 1) {
             System.out.println("Wrong number");
             return;
         }
+        Course picked = (Course) list.get(num);
         switch (Util.pickView("action",
                 "View course file",
                 "View teacher",
                 "View mark")) {
-            case 1: System.out.println(list.get(num).getCourseFiles().pretty()); break;
-            case 2: viewTeacher(list.get(num)); break;
-            case 3: System.out.println(getMark(list.get(num)).toString()); break;
+            case 1: System.out.println(picked.getCourseFiles().pretty()); break;
+            case 2: viewTeacher(picked); break;
+            case 3: System.out.println(getMark(picked).toString()); break;
             case 4: break;
             default: break;
         }
@@ -129,7 +130,7 @@ public class Student extends Person {
         Teacher t = getTeacher(course);
         System.out.println(t);
         switch (Util.pickView("action",
-                "projectoop.Rate teacher",
+                "Rate teacher",
                 "Cancel")) {
             case 1: createTeacherRating(t); break;
             case 2: break;
