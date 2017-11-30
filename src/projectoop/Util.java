@@ -1,36 +1,24 @@
 package projectoop;
 
 import java.io.*;
-import java.util.Objects;
-import java.util.Scanner;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * Created by aqali on 26.11.2017.
  */
 public class Util {
-    static int pickView(Vector vector, String name) {
+    static int pickView(Collection vector, String name) {
         System.out.println("Pick " + name + "s");
         int cnt = 1;
         for (Object o : vector) {
             System.out.println(cnt++ + ". " + o);
         }
-        Scanner sc = new Scanner(System.in);
-        int x = sc.nextInt();
-        sc.close();
-        return x;
+        Scanner sc = Util.getReadingScanner();//new Scanner(System.in);
+        return sc.nextInt();
     }
 
     static int pickView(String name, Object... items) {
-        System.out.println("Pick " + name + "s");
-        int cnt = 1;
-        for (Object o : items) {
-            System.out.println(cnt++ + ". " + o);
-        }
-        Scanner sc = new Scanner(System.in);
-        int x = sc.nextInt();
-        sc.close();
-        return x;
+        return pickView(new Vector(Arrays.asList(items)), name);
     }
     public static String askGet(Scanner sc, String message) {
         System.out.println(message);
@@ -40,7 +28,7 @@ public class Util {
     public static String hashIt(String s) {
         return String.valueOf(Objects.hash(s));
     }
-    static void Serialize(Object o, String filename) {
+    static void Serialize(StorageSingletone o, String filename) {
         try {
             FileOutputStream fout = new FileOutputStream(filename);
             ObjectOutputStream oout = new ObjectOutputStream(fout);
@@ -63,5 +51,11 @@ public class Util {
 
         }
         return result;
+    }
+
+    private static Scanner readingScanner = new Scanner(System.in);
+
+    public static Scanner getReadingScanner() {
+        return readingScanner;
     }
 }

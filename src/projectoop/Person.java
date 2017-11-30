@@ -38,27 +38,25 @@ public abstract class Person implements Serializable, Viewable, Interactive {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = Util.hashIt(password);
     }
 
     @Override
     public Person create(Person s) {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = Util.getReadingScanner();
 
         System.out.println("Enter name: ");
         s.setName(sc.next());
 
         System.out.println("Enter password: ");
-        s.setPassword(Util.hashIt(sc.next()));
-
-        sc.close();
+        s.setPassword(sc.next());
 
         return s;
     }
 
     @Override
     public void update() {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = Util.getReadingScanner();
 
         System.out.println("Enter desired name: ");
         String name = sc.next();
@@ -66,7 +64,6 @@ public abstract class Person implements Serializable, Viewable, Interactive {
         System.out.println("Enter desired password: ");
         String password = sc.next();
         setPassword(Util.hashIt(password));
-        sc.close();
     }
 
 }

@@ -5,8 +5,8 @@ import java.util.*;
 public class Student extends Person {
     private double gpa = 4.0;
 
-    private TreeSet<Course> current = new TreeSet<>();
-    private TreeSet<Course> passed = new TreeSet<>();
+    private HashSet<Course> current = new HashSet<>();
+    private HashSet<Course> passed = new HashSet<>();
 
     private HashMap<Course, Mark> marks = new HashMap<>();
 
@@ -36,7 +36,7 @@ public class Student extends Person {
 
     private void createTeacherRating(Teacher teacher) {
         System.out.println("Put rate in range[1-5]");
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = Util.getReadingScanner();
         Rate r = new Rate();
         for (Option o : Option.options) {
             try {
@@ -49,7 +49,6 @@ public class Student extends Person {
             }
         }
         rateTeacher(r, teacher);
-        sc.close();
     }
 
     public Teacher getTeacher(Course c) {

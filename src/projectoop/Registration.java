@@ -1,8 +1,9 @@
 package projectoop;
 
+import java.io.Serializable;
 import java.util.Vector;
 
-public class Registration {
+public class Registration implements Serializable {
     public static Vector<Registration> registrations = new Vector<>();
     enum Type {
         ACCEPTED, REJECTED, PENDING

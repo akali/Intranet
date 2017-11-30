@@ -1,7 +1,9 @@
 package projectoop;
 
+import java.io.Serializable;
+
 /**
  */
-class Report {
+class Report implements Serializable {
 }
 

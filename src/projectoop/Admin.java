@@ -24,24 +24,23 @@ public class Admin extends Employee {
             p.create(p);
             String login = storage.insertAndGenerateId(p);
             p.setLogin(login);
+            System.out.println("New entity with login = " + login + " have been created");
         }
     }
 
     public void removeEntity() {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = Util.getReadingScanner();
         System.out.println("Enter login: ");
         String login = sc.next();
-        sc.close();
         storage.removeEntity(login);
     }
 
     public void updateEntity() throws UserNotFoundException {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = Util.getReadingScanner();
         System.out.println("Enter login: ");
         String login = sc.next();
         Person p = storage.getPerson(login);
         p.update();
-        sc.close();
     }
 
     @Override

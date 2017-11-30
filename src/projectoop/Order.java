@@ -1,9 +1,11 @@
 package projectoop;
 
+import java.io.Serializable;
+
 /**
  * Created by aqali on 29.11.2017.
  */
-public class Order {
+public class Order implements Serializable {
     private Employee sender;
     private String message;
     private Type type = Type.PENDING;

@@ -7,11 +7,14 @@ import java.util.Scanner;
  */
 public class MainTester {
     public static void main(String[] argv) {
-        /**
-         *
-         * Do deserialization stuff
-         */
-        Scanner sc = new Scanner(System.in);
+        StorageSingletone.setInstance(StorageSingletone.load());
+        StorageSingletone storage = StorageSingletone.getInstance();
+
+        System.out.println(storage);
+
+        init();
+
+        Scanner sc = Util.getReadingScanner();
 
         Person p = null;
         String login;
@@ -20,7 +23,7 @@ public class MainTester {
             login = Util.askGet(sc, "id: ");
             password = Util.hashIt(Util.askGet(sc, "password: "));
             try {
-                p = StorageSingletone.getPerson(login);
+                p = storage.getPerson(login);
                 if (p.getPassword().equals(password))
                     break;
             } catch (UserNotFoundException ignored) {
@@ -28,7 +31,14 @@ public class MainTester {
             System.out.println("Wrong login/password");
         }
 
-        while (p.view()) ;
+        while (p.view());
         System.out.println("Bye!");
+        StorageSingletone.getInstance().save();
+    }
+
+    private static void init() {
+        Admin admin = new Admin();
+        admin.setPassword("123");
+        System.out.println(StorageSingletone.getInstance().insertAndGenerateId(admin));
     }
 }

@@ -1,9 +1,34 @@
 package projectoop;
 
+import java.io.File;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Vector;
 
-public class StorageSingletone {
+public class StorageSingletone implements Serializable {
+    @Override
+    public String toString() {
+        return "StorageSingletone{" +
+                "people=" + people +
+                ", courses=" + courses +
+                ", courseFiles=" + courseFiles +
+                ", marks=" + marks +
+                ", admins=" + admins +
+                ", students=" + students +
+                ", teachers=" + teachers +
+                ", managers=" + managers +
+                ", executors=" + executors +
+                ", orders=" + orders +
+                ", F=" + F +
+                ", G=" + G +
+                '}';
+    }
+
+    public static void setInstance(StorageSingletone instance) {
+        StorageSingletone.instance = instance;
+    }
+
     private static StorageSingletone instance = new StorageSingletone();
     private StorageSingletone() {
         G.put(Admin.class, "A");
@@ -26,13 +51,19 @@ public class StorageSingletone {
     private HashMap<String, Person> people = new HashMap<>();
     private HashSet<Course> courses = new HashSet<>();
     private HashSet<CourseFile> courseFiles = new HashSet<>();
-    private HashSet<Mark> marks = new HashSet<>();
+    private Vector<Mark> marks = new Vector<>();
 
     private HashSet<Admin> admins = new HashSet<>();
     private HashSet<Student> students = new HashSet<>();
     private HashSet<Teacher> teachers = new HashSet<>();
     private HashSet<Manager> managers = new HashSet<>();
     private HashSet<Executor> executors = new HashSet<>();
+    private Vector<Order> orders = new Vector<>();
+
+    public Vector<Order> getOrders() {
+        return orders;
+    }
+
     private HashMap<Class<?>, HashSet> F = new HashMap<>();
     private HashMap<Class<?>, String> G = new HashMap<>();
 
@@ -47,10 +78,13 @@ public class StorageSingletone {
     }
 
     public void save() {
-        Util.Serialize(this, "save");
+        System.out.println(instance);
+        Util.Serialize(instance, "save");
     }
-    public void load() {
-        Util.Deserialize("save");
+    public static StorageSingletone load() {
+        if (new File("save").exists())
+            return (StorageSingletone) Util.Deserialize("save");
+        return instance;
     }
 
     public HashSet getEntitiesSet(Class<?> klas) {

@@ -1,9 +1,10 @@
 package projectoop;
 
+import java.io.Serializable;
 import java.lang.*;
 import java.util.Vector;
 
-public class Course {
+public class Course implements Serializable {
     private String name;
     private Teacher teacher;
     private Vector<Course> preprequesites;

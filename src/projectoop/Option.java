@@ -1,10 +1,11 @@
 package projectoop;
 
+import java.io.Serializable;
 import java.lang.*;
 import java.util.Arrays;
 import java.util.Vector;
 
-public class Option implements Cloneable {
+public class Option implements Cloneable, Serializable {
     public Option(String description) {
         this.description = description;
     }
