@@ -4,6 +4,10 @@ import java.util.TreeSet;
 
 public class Manager extends Employee {
     
+    public Manager() {
+        super();
+    }
+
     public Manager(String id, String password, String name, int salary) {
 		super(id, password, name, salary);
 		// TODO Auto-generated constructor stub

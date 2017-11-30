@@ -20,7 +20,7 @@ public class MainTester {
             login = Util.askGet(sc, "id: ");
             password = Util.hashIt(Util.askGet(sc, "password: "));
             try {
-                p = Storage.getPerson(login);
+                p = StorageSingletone.getPerson(login);
                 if (p.getPassword().equals(password))
                     break;
             } catch (UserNotFoundException ignored) {

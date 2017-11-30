@@ -1,8 +1,6 @@
 package projectoop;
 
 public class Mark {
-
-
     private double firstAttestation;
     private double secondAttestation;
     private double finalExam;

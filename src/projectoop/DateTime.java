@@ -1,7 +1,0 @@
-package projectoop;
-
-/**
- */
-class DateTime {
-}
-

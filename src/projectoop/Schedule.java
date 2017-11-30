@@ -4,9 +4,9 @@ import java.io.Serializable;
 import sun.util.calendar.BaseCalendar.Date;
 
 public class Schedule implements Serializable {
-    private DAYS day;
-    private Date time;
-    
+	private DAYS day;
+	private Date time;
+
 	public Schedule(DAYS day, Date time) {
 		super();
 		this.day = day;
@@ -16,7 +16,8 @@ public class Schedule implements Serializable {
 	public Schedule() {
 		super();
 	}
-//methods:
+
+	//methods:
 	public DAYS getDay() {
 		return day;
 	}
@@ -60,4 +61,5 @@ public class Schedule implements Serializable {
 	public void setTime(Date time) {
 		this.time = time;
 	}
+}
 

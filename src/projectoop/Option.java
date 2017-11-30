@@ -4,8 +4,6 @@ import java.lang.*;
 import java.util.Arrays;
 import java.util.Vector;
 
-/**
- */
 public class Option implements Cloneable {
     public Option(String description) {
         this.description = description;
@@ -17,35 +15,22 @@ public class Option implements Cloneable {
             new Option("Question 3")
     ));
     private String description;
-
-    /**
-     */
     private int rate;
 
-    /**
-     * @return
-     */
-    public int getRate() {
-        return 0;
-    }
-
-    /**
-     * @param rate
-     */
-    public void setRate(int rate) {
-    }
-
-    /**
-     * @return
-     */
     public String getDescription() {
-        return null;
+        return description;
     }
 
-    /**
-     * @param description
-     */
     public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
     }
 
     @Override

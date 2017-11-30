@@ -3,31 +3,13 @@ package projectoop;
 import java.lang.*;
 import java.util.Vector;
 
-/**
- */
 public class Course {
-    /**
-     */
     private String name;
-    /**
-     */
     private Teacher teacher;
-    /**
-     */
     private Vector<Course> preprequesites;
-    /**
-     */
     private CourseFile courseFiles;
-    /**
-     */
     private int creditsNumber;
-    /**
-     */
     private String id;
-
-    /**
-     * @return
-     */
     public int getCreditsNumber() {
         return 0;
     }
@@ -39,10 +21,6 @@ public class Course {
     public void setCourseFiles(CourseFile courseFiles) {
         this.courseFiles = courseFiles;
     }
-
-    /**
-     * @param creditsNumber
-     */
     public void setCreditsNumber(int creditsNumber) {
     }
 

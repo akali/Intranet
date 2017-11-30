@@ -9,11 +9,10 @@ public class Student extends Person {
     private TreeSet<Course> passed = new TreeSet<>();
 
     private HashMap<Course, Mark> marks = new HashMap<>();
-    private static TreeSet<Student> students = new TreeSet<>();
 
     private HashMap<Course, Teacher> teachers = new HashMap<>();
     public void registerForCourse(Course c) {
-        Registration.addRegitration(new Registration(this, c));
+        Registration.addRegistration(new Registration(this, c));
     }
     public TreeSet<Course> getCourses() {
         return current;
@@ -80,9 +79,9 @@ public class Student extends Person {
     }
 
     private void viewCourses() {
-        Vector<Course> list = new Vector<Course>(Arrays.<Course>asList((Course[]) current.toArray()));
+        Vector<Course> list = new Vector<>(Arrays.asList((Course[]) current.toArray()));
         int num = Util.pickView(list, "course") - 1;
-        if (num >= list.size()) {
+        if (num >= list.size() || num < 1) {
             System.out.println("Wrong number");
             return;
         }
@@ -114,12 +113,10 @@ public class Student extends Person {
         teachers.put(course, teacher);
     }
 
-    private static Student INSTANCE = new Student();
-    public static Student getInstance() {
-        return INSTANCE;
-    }
     public Student() {
         super();
     }
+
+
 }
 

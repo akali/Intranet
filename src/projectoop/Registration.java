@@ -2,9 +2,6 @@ package projectoop;
 
 import java.util.Vector;
 
-/**
- * Created by aqali on 26.11.2017.
- */
 public class Registration {
     public static Vector<Registration> registrations = new Vector<>();
     enum Type {
@@ -13,7 +10,7 @@ public class Registration {
     private Student student;
     private Course course;
     private Type type;
-    public static void addRegitration(Registration registration) {
+    public static void addRegistration(Registration registration) {
         registrations.add(registration);
     }
 
