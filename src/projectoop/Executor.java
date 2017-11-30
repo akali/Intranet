@@ -55,6 +55,25 @@ public class Executor extends Employee {
         Order pickedOrder = orders.get(num);
         System.out.println(pickedOrder);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Executor executor = (Executor) o;
+
+        return orders != null ? orders.equals(executor.orders) : executor.orders == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (orders != null ? orders.hashCode() : 0);
+        return result;
+    }
+
     private void viewOrders() {
         Vector<Order> orders = StorageSingletone.getInstance().getOrders();
         int num = Util.pickView(orders, "order") - 1;

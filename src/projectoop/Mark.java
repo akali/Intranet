@@ -14,6 +14,34 @@ public class Mark implements Serializable {
         finalExam = -1;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Mark mark = (Mark) o;
+
+        if (Double.compare(mark.firstAttestation, firstAttestation) != 0) return false;
+        if (Double.compare(mark.secondAttestation, secondAttestation) != 0) return false;
+        if (Double.compare(mark.finalExam, finalExam) != 0) return false;
+        return Double.compare(mark.total, total) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(firstAttestation);
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(secondAttestation);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(finalExam);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(total);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
     public String toLetter() {
         if (getTotal() > 95) return "A";
         else if (getTotal() > 90 && getTotal() < 95) return "-A";

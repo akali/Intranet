@@ -63,6 +63,32 @@ public class Teacher extends Employee {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Teacher teacher = (Teacher) o;
+
+        if (students != null ? !students.equals(teacher.students) : teacher.students != null) return false;
+        if (courses != null ? !courses.equals(teacher.courses) : teacher.courses != null) return false;
+        if (marks != null ? !marks.equals(teacher.marks) : teacher.marks != null) return false;
+        if (rate != null ? !rate.equals(teacher.rate) : teacher.rate != null) return false;
+        return current != null ? current.equals(teacher.current) : teacher.current == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (students != null ? students.hashCode() : 0);
+        result = 31 * result + (courses != null ? courses.hashCode() : 0);
+        result = 31 * result + (marks != null ? marks.hashCode() : 0);
+        result = 31 * result + (rate != null ? rate.hashCode() : 0);
+        result = 31 * result + (current != null ? current.hashCode() : 0);
+        return result;
+    }
+
     private void viewCourses() {
         Vector<Course> list = new Vector<>(Arrays.asList((Course[]) current.toArray()));
         int num = Util.pickView(list, "course") - 1;
@@ -80,6 +106,7 @@ public class Teacher extends Employee {
             case 4: break;
             default: break;
         }
+
     }
 //    private void viewStudent(Course course) {
 //        Student s = getStudent(course);

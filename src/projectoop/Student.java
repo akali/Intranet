@@ -14,7 +14,7 @@ public class Student extends Person {
     public void registerForCourse(Course c) {
         Registration.addRegistration(new Registration(this, c));
     }
-    public TreeSet<Course> getCourses() {
+    public HashSet<Course> getCourses() {
         return current;
     }
     public CourseFile getCourseFile(Course c) {
@@ -77,6 +77,34 @@ public class Student extends Person {
     private void registerCourse() {
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Student student = (Student) o;
+
+        if (Double.compare(student.gpa, gpa) != 0) return false;
+        if (current != null ? !current.equals(student.current) : student.current != null) return false;
+        if (passed != null ? !passed.equals(student.passed) : student.passed != null) return false;
+        if (marks != null ? !marks.equals(student.marks) : student.marks != null) return false;
+        return teachers != null ? teachers.equals(student.teachers) : student.teachers == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        long temp;
+        temp = Double.doubleToLongBits(gpa);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (current != null ? current.hashCode() : 0);
+        result = 31 * result + (passed != null ? passed.hashCode() : 0);
+        result = 31 * result + (marks != null ? marks.hashCode() : 0);
+        result = 31 * result + (teachers != null ? teachers.hashCode() : 0);
+        return result;
+    }
+
     private void viewCourses() {
         Vector<Course> list = new Vector<>(Arrays.asList((Course[]) current.toArray()));
         int num = Util.pickView(list, "course") - 1;
@@ -94,6 +122,7 @@ public class Student extends Person {
             case 4: break;
             default: break;
         }
+
     }
 
     private void viewTeacher(Course course) {

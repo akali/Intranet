@@ -21,6 +21,26 @@ public class Registration implements Serializable {
         this.type = Type.PENDING;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Registration that = (Registration) o;
+
+        if (student != null ? !student.equals(that.student) : that.student != null) return false;
+        if (course != null ? !course.equals(that.course) : that.course != null) return false;
+        return type == that.type;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = student != null ? student.hashCode() : 0;
+        result = 31 * result + (course != null ? course.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        return result;
+    }
+
     public static Vector<Registration> getRegistrations() {
         return registrations;
     }

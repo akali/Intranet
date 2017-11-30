@@ -42,6 +42,26 @@ public abstract class Person implements Serializable, Viewable, Interactive {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Person person = (Person) o;
+
+        if (login != null ? !login.equals(person.login) : person.login != null) return false;
+        if (name != null ? !name.equals(person.name) : person.name != null) return false;
+        return password != null ? password.equals(person.password) : person.password == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = login != null ? login.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public Person create(Person s) {
         Scanner sc = Util.getReadingScanner();
 
