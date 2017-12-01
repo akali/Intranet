@@ -93,10 +93,26 @@ public class Teacher extends Employee {
                 "View course file",
                 "View student")) {
             case 1:
-                System.out.println(list.get(num).getCourseFiles().pretty());
+                manageCourseFile(list.get(num));
                 break;
             case 2:
                 viewStudent(list.get(num));
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void manageCourseFile(Course course) {
+        switch (Util.pickView("action",
+                "Create",
+                "View",
+                "Cancel")) {
+            case 1:
+                course.setCourseFiles(CourseFile.create());
+                break;
+            case 2:
+                System.out.println(course.getCourseFiles().pretty());
                 break;
             default:
                 break;

@@ -13,14 +13,16 @@ public class Course implements Serializable {
     private HashSet<Course> prerequisites = new HashSet<>();
     private CourseFile courseFiles;
     private int creditsNumber;
+    private Faculty faculty;
 
     public Course() { }
 
-    public Course(String name, String id, Teacher teacher, int creditsNumber) {
+    public Course(String name, String id, Teacher teacher, int creditsNumber, Faculty faculty) {
         this.name = name;
         this.id = id;
         this.teacher = teacher;
         this.creditsNumber = creditsNumber;
+        this.faculty = faculty;
     }
 
     public static Course create() {
@@ -29,7 +31,8 @@ public class Course implements Serializable {
         int creditsNumber = Integer.parseInt(Util.askGet(Util.getReadingScanner(), "Enter number of credits"));
         HashSet<Teacher> teachers = StorageSingletone.getInstance().getTeachers();
         int num = Util.pickView(teachers, "teacher") - 1;
-        return new Course(name, id, (Teacher) Util.getPicked(teachers, num), creditsNumber);
+        Faculty faculty = Faculty.create();
+        return new Course(name, id, (Teacher) Util.getPicked(teachers, num), creditsNumber, faculty);
     }
 
     public String getName() {
@@ -128,6 +131,10 @@ public class Course implements Serializable {
                 ", courseFiles=" + courseFiles +
                 ", creditsNumber=" + creditsNumber +
                 '}';
+    }
+
+    public Faculty getFaculty() {
+        return faculty;
     }
 }
 

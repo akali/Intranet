@@ -40,7 +40,7 @@ public class Manager extends Employee {
         super.update();
         switch (projectoop.Util.pickView("Manager type",
                 "Office Register",
-                "Department")) {
+                "Faculty")) {
             case 1:
                 setType(Type.OfficeRegister);
                 break;
@@ -166,7 +166,13 @@ public class Manager extends Employee {
                 "Reject",
                 "Cancel")) {
             case 1:
-                acceptRegistration(picked);
+                try {
+                    acceptRegistration(picked);
+                } catch (FacultyMismatchException e) {
+                    System.out.println("Can not add: FacultyMismatchException");
+                } catch (CreditsNumberExceededException e) {
+                    System.out.println("Can not add: CreditsNumberExceededException");
+                }
                 break;
             case 2:
                 rejectRegistration(picked);
@@ -181,7 +187,13 @@ public class Manager extends Employee {
         StorageSingletone.getInstance().removeRegistration(picked);
     }
 
-    private void acceptRegistration(Registration picked) {
+    private void acceptRegistration(Registration picked) throws FacultyMismatchException, CreditsNumberExceededException {
+        if (!picked.getCourse().getFaculty().equals(picked.getStudent().getFaculty())) {
+            throw new FacultyMismatchException();
+        }
+        if (picked.getStudent().getCreditsNumber() > Konst.TOTAL_CREDITS_NUMBER) {
+            throw new CreditsNumberExceededException();
+        }
         picked.acceptRegistration();
         StorageSingletone.getInstance().removeRegistration(picked);
     }

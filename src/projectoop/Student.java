@@ -10,7 +10,7 @@ public class Student extends Person {
     @Override
     public Person create(Person s) {
         Student result = (Student) super.create(s);
-        result.department = Department.values()[projectoop.Util.pickView("department",
+        result.faculty = Faculty.values()[projectoop.Util.pickView("faculty",
                 "FIT",
                 "BS",
                 "ISE") - 1];
@@ -20,7 +20,7 @@ public class Student extends Person {
     @Override
     public void update() {
         super.update();
-        department = Department.values()[projectoop.Util.pickView("department",
+        faculty = Faculty.values()[projectoop.Util.pickView("faculty",
                 "FIT",
                 "BS",
                 "ISE") - 1];
@@ -28,7 +28,7 @@ public class Student extends Person {
 
     private double gpa = 0.0;
 
-    private Department department;
+    private Faculty faculty;
     private HashSet<Course> current = new HashSet<>();
     private HashSet<Course> passed = new HashSet<>();
 
@@ -129,7 +129,7 @@ public class Student extends Person {
         Student student = (Student) o;
 
         if (Double.compare(student.gpa, gpa) != 0) return false;
-        if (department != student.department) return false;
+        if (faculty != student.faculty) return false;
         if (current != null ? !current.equals(student.current) : student.current != null) return false;
         if (passed != null ? !passed.equals(student.passed) : student.passed != null) return false;
         if (marks != null ? !marks.equals(student.marks) : student.marks != null) return false;
@@ -142,7 +142,7 @@ public class Student extends Person {
         long temp;
         temp = Double.doubleToLongBits(gpa);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (department != null ? department.hashCode() : 0);
+        result = 31 * result + (faculty != null ? faculty.hashCode() : 0);
         result = 31 * result + (current != null ? current.hashCode() : 0);
         result = 31 * result + (passed != null ? passed.hashCode() : 0);
         result = 31 * result + (marks != null ? marks.hashCode() : 0);
@@ -205,5 +205,16 @@ public class Student extends Person {
     }
 
 
+    public Faculty getFaculty() {
+        return faculty;
+    }
+
+    public int getCreditsNumber() {
+        int cnt = 0;
+        for (Course c : getCourses()){
+            cnt += c.getCreditsNumber();
+        }
+        return cnt;
+    }
 }
 
