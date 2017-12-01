@@ -6,6 +6,10 @@ import java.util.Vector;
 import java.util.*;
 
 public class Teacher extends Employee {
+    public void addCourse(Course c) {
+        courses.add(c);
+    }
+
     private enum Degree implements Serializable {
         BACHELOR, MASTER, PHD
     }
@@ -37,6 +41,10 @@ public class Teacher extends Employee {
     }
 
     private HashMap<Course, Student> students = new HashMap<>();
+
+    public void addStudent(Course c, Student s) {
+        students.put(c, s);
+    }
 
     private HashMap<Student, Rate> rate = new HashMap<>();
     private HashSet<Course> courses = new HashSet<>();
@@ -83,20 +91,20 @@ public class Teacher extends Employee {
     }
 
     private void viewCourses() {
-        Vector<Course> list = new Vector<>(Arrays.asList((Course[]) courses.toArray()));
-        int num = Util.pickView(list, "course") - 1;
-        if (num >= list.size() || num < 0) {
+        int num = Util.pickView(courses, "course") - 1;
+        if (num >= courses.size() || num < 0) {
             System.out.println("Wrong number");
             return;
         }
+        Course picked = (Course) Util.getPicked(courses, num);
         switch (Util.pickView("action",
                 "View course file",
                 "View student")) {
             case 1:
-                manageCourseFile(list.get(num));
+                manageCourseFile(picked);
                 break;
             case 2:
-                viewStudent(list.get(num));
+                viewStudent(picked);
                 break;
             default:
                 break;
@@ -142,9 +150,7 @@ public class Teacher extends Employee {
     public String toString() {
         return "Teacher{" +
                 "degree=" + degree +
-                ", students=" + students +
                 ", rate=" + rate +
-                ", courses=" + courses +
                 "} " + super.toString();
     }
 

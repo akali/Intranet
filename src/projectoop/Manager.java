@@ -91,10 +91,10 @@ public class Manager extends Employee {
             case 4:
                 createCourse();
                 break;
-            case 6:
+            case 5:
                 sendOrder(Order.create(this));
                 break;
-            case 5:
+            case 6:
                 return false;
             default:
                 break;

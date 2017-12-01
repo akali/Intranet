@@ -48,6 +48,9 @@ public class Student extends Person {
         return marks;
     }
     public Mark getMark(Course c) {
+        if (!marks.containsKey(c)) {
+            marks.put(c, new Mark());
+        }
         return marks.get(c);
     }
     public Transcript getTranscript() {
@@ -151,13 +154,12 @@ public class Student extends Person {
     }
 
     private void viewCourses() {
-        Vector<Object> list = new Vector<>(Arrays.asList(current.toArray()));
-        int num = projectoop.Util.pickView(list, "course") - 1;
-        if (num >= list.size() || num < 1) {
+        int num = projectoop.Util.pickView(current, "course") - 1;
+        if (num >= current.size() || num < 0) {
             System.out.println("Wrong number");
             return;
         }
-        Course picked = (Course) list.get(num);
+        Course picked = (Course) Util.getPicked(current, num);
         switch (projectoop.Util.pickView("action",
                 "View course file",
                 "View teacher",
@@ -215,6 +217,10 @@ public class Student extends Person {
             cnt += c.getCreditsNumber();
         }
         return cnt;
+    }
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
     }
 }
 

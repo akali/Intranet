@@ -51,6 +51,15 @@ public class Registration implements Serializable {
         return course;
     }
 
+    @Override
+    public String toString() {
+        return "Registration{" +
+                "student=" + student +
+                ", course=" + course +
+                ", type=" + type +
+                '}';
+    }
+
     public void setCourse(Course course) {
         this.course = course;
     }
@@ -66,6 +75,8 @@ public class Registration implements Serializable {
     public void acceptRegistration() {
         student.getCourses().add(course);
         student.setTeacher(course, course.getTeacher());
+        course.addStudent(student);
+        course.getTeacher().addStudent(course, student);
         type = Type.ACCEPTED;
     }
 

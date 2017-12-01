@@ -1,5 +1,6 @@
 package projectoop;
 
+import java.io.File;
 import java.util.Scanner;
 
 /**
@@ -12,7 +13,8 @@ public class MainTester {
 
         System.out.println(storage);
 
-        init();
+        if (!(new File("save").exists()))
+            init();
 
         Util.Scanner sc = Util.getReadingScanner();
 
@@ -39,13 +41,15 @@ public class MainTester {
     private static void init() {
         Admin admin = new Admin();
         admin.setPassword("1");
-        Person student = new Student();
+        Student student = new Student();
         student.setPassword("1");
+        student.setFaculty(Faculty.FIT);
+
         Person manager = new Manager();
         manager.setPassword("1");
         Executor executor = new Executor();
         executor.setPassword("1");
-        Person teacher = new Teacher();
+        Teacher teacher = new Teacher();
         teacher.setPassword("1");
 
         System.out.println(StorageSingletone.getInstance().insertAndGenerateId(admin));
@@ -53,5 +57,12 @@ public class MainTester {
         System.out.println(StorageSingletone.getInstance().insertAndGenerateId(manager));
         System.out.println(StorageSingletone.getInstance().insertAndGenerateId(executor));
         System.out.println(StorageSingletone.getInstance().insertAndGenerateId(teacher));
+
+        Course c = new Course("OOP",
+                "OOP",
+                (Teacher) StorageSingletone.getInstance().getTeachers().toArray()[0],
+                3,
+                Faculty.FIT);
+        StorageSingletone.getInstance().addCourse(c);
     }
 }

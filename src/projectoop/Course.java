@@ -23,6 +23,7 @@ public class Course implements Serializable {
         this.teacher = teacher;
         this.creditsNumber = creditsNumber;
         this.faculty = faculty;
+        teacher.addCourse(this);
     }
 
     public static Course create() {
@@ -32,7 +33,9 @@ public class Course implements Serializable {
         HashSet<Teacher> teachers = StorageSingletone.getInstance().getTeachers();
         int num = Util.pickView(teachers, "teacher") - 1;
         Faculty faculty = Faculty.create();
-        return new Course(name, id, (Teacher) Util.getPicked(teachers, num), creditsNumber, faculty);
+        Teacher teacher = (Teacher) Util.getPicked(teachers, num);
+        //        teacher.addCourse(c);
+        return new Course(name, id, teacher, creditsNumber, faculty);
     }
 
     public String getName() {
@@ -113,7 +116,7 @@ public class Course implements Serializable {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (id != null ? id.hashCode() : 0);
         result = 31 * result + (teacher != null ? teacher.hashCode() : 0);
-        result = 31 * result + (students != null ? students.hashCode() : 0);
+//        result = 31 * result + (students != null ? students.hashCode() : 0);
         result = 31 * result + (prerequisites != null ? prerequisites.hashCode() : 0);
         result = 31 * result + (courseFiles != null ? courseFiles.hashCode() : 0);
         result = 31 * result + creditsNumber;

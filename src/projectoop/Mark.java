@@ -43,6 +43,7 @@ public class Mark implements Serializable, Viewable {
     }
 
     public String toLetter() {
+        if (retake()) return "F";
         if (getTotal() > 95) return "A";
         else if (getTotal() > 90 && getTotal() < 95) return "-A";
         else if (getTotal() > 85 && getTotal() < 90) return "+B";
@@ -54,6 +55,10 @@ public class Mark implements Serializable, Viewable {
         else if (getTotal() > 55 && getTotal() < 60) return "D";
         else if (getTotal() > 50 && getTotal() < 55) return "-D";
         else return "FAIL";
+    }
+
+    private boolean retake() {
+        return (firstAttestation + secondAttestation < 30) || (getFinalExam() < 20);
     }
 
     public double getFinalExam() {
@@ -74,20 +79,8 @@ public class Mark implements Serializable, Viewable {
         else return secondAttestation;
     }
 
-    public void addMark(double points) {
-        if (getFirstAttestation() == -1) {
-            total = +points;
-            firstAttestation = points;
-        } else if (getFirstAttestation() > -1 && getSecondAttestation() == -1) {
-            total = +points;
-            secondAttestation = points;
-        } else if (getFirstAttestation() > -1 && getSecondAttestation() > -1 && getFinalExam() == -1) {
-            total = +points;
-            finalExam = points;
-        }
-    }
-
     public double toNumber() {
+        if (getFinalExam() < 20) return 0;
         if (getTotal() > 95) return 4.0;
         else if (getTotal() > 90 && getTotal() < 95) return 3.67;
         else if (getTotal() > 85 && getTotal() < 90) return 3.33;
