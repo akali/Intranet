@@ -12,7 +12,7 @@ public class Order implements Serializable {
     private Type type = Type.PENDING;
 
     public static Order create(Teacher teacher) {
-        Scanner sc = Util.getReadingScanner();
+        Util.Scanner sc = Util.getReadingScanner();
         String message = Util.askGet(sc, "Enter message: ");
         return new Order(teacher, message);
     }

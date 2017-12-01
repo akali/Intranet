@@ -49,16 +49,23 @@ public abstract class Employee extends Person implements Comparable<Employee> {
     public void update() {
         super.update();
 
-        Scanner sc = Util.getReadingScanner();
+        Util.Scanner sc = Util.getReadingScanner();
 
         System.out.println("Enter desired salary: ");
         setSalary(sc.nextDouble());
     }
 
     @Override
+    public String toString() {
+        return "Employee{" +
+                "salary=" + salary +
+                "} " + super.toString();
+    }
+
+    @Override
     public Person create(Person s) {
         Employee result = (Employee) super.create(s);
-        Scanner sc = Util.getReadingScanner();
+        Util.Scanner sc = Util.getReadingScanner();
 
         System.out.println("Enter salary: ");
         result.setSalary(sc.nextDouble());

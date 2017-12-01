@@ -1,16 +1,16 @@
 package projectoop;
 
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Vector;
 
 public class Student extends Person {
-    enum Department {
-        FIT, BS, ISE
-    }
-
     @Override
     public Person create(Person s) {
         Student result = (Student) super.create(s);
-        result.department = Department.values()[Util.pickView("department",
+        result.department = Department.values()[projectoop.Util.pickView("department",
                 "FIT",
                 "BS",
                 "ISE") - 1];
@@ -20,7 +20,7 @@ public class Student extends Person {
     @Override
     public void update() {
         super.update();
-        department = Department.values()[Util.pickView("department",
+        department = Department.values()[projectoop.Util.pickView("department",
                 "FIT",
                 "BS",
                 "ISE") - 1];
@@ -51,6 +51,7 @@ public class Student extends Person {
         return marks.get(c);
     }
     public Transcript getTranscript() {
+
         return null;
     }
 
@@ -60,7 +61,8 @@ public class Student extends Person {
 
     private void createTeacherRating(Teacher teacher) {
         System.out.println("Put rate in range[1-5]");
-        Scanner sc = Util.getReadingScanner();
+
+        projectoop.Util.Scanner sc = projectoop.Util.getReadingScanner();
         Rate r = new Rate();
         for (Option o : Option.options) {
             try {
@@ -81,7 +83,8 @@ public class Student extends Person {
 
     @Override
     public boolean view() {
-        switch (Util.pickView("action",
+        System.out.println(toString());
+        switch (projectoop.Util.pickView("action",
                 "View courses",
                 "Register to course",
                 "View transcript",
@@ -107,7 +110,14 @@ public class Student extends Person {
     }
 
     private void registerCourse() {
-        StorageSingletone.getInstance().getCourses().stream().filter()
+        HashSet<Course> courses = StorageSingletone.getInstance().getCourses();
+        int num = projectoop.Util.pickView(courses, "course") - 1;
+        if (num < 0 || num >= courses.size()) {
+            System.out.println("Wrong input");
+            return;
+        }
+        Course pickedCourse = (Course) projectoop.Util.getPicked(courses, num);
+        registerForCourse(pickedCourse);
     }
 
     @Override
@@ -142,21 +152,29 @@ public class Student extends Person {
 
     private void viewCourses() {
         Vector<Object> list = new Vector<>(Arrays.asList(current.toArray()));
-        int num = Util.pickView(list, "course") - 1;
+        int num = projectoop.Util.pickView(list, "course") - 1;
         if (num >= list.size() || num < 1) {
             System.out.println("Wrong number");
             return;
         }
         Course picked = (Course) list.get(num);
-        switch (Util.pickView("action",
+        switch (projectoop.Util.pickView("action",
                 "View course file",
                 "View teacher",
                 "View mark")) {
-            case 1: System.out.println(picked.getCourseFiles().pretty()); break;
-            case 2: viewTeacher(picked); break;
-            case 3: System.out.println(getMark(picked).toString()); break;
-            case 4: break;
-            default: break;
+            case 1:
+                System.out.println(getCourseFile(picked).pretty());
+                break;
+            case 2:
+                viewTeacher(picked);
+                break;
+            case 3:
+                System.out.println(getMark(picked).toString());
+                break;
+            case 4:
+                break;
+            default:
+                break;
         }
 
     }
@@ -164,12 +182,17 @@ public class Student extends Person {
     private void viewTeacher(Course course) {
         Teacher t = getTeacher(course);
         System.out.println(t);
-        switch (Util.pickView("action",
+        switch (projectoop.Util.pickView("action",
                 "Rate teacher",
                 "Cancel")) {
-            case 1: createTeacherRating(t); break;
-            case 2: break;
-            default: System.out.println("Wrong input"); break;
+            case 1:
+                createTeacherRating(t);
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("Wrong input");
+                break;
         }
     }
 

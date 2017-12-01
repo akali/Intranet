@@ -63,9 +63,9 @@ public class Registration implements Serializable {
         this.type = type;
     }
 
-    public void acceptRegistration(Teacher teacher) {
+    public void acceptRegistration() {
         student.getCourses().add(course);
-        student.setTeacher(course, teacher);
+        student.setTeacher(course, course.getTeacher());
         type = Type.ACCEPTED;
     }
 

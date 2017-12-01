@@ -1,7 +1,6 @@
 package projectoop;
 
 import java.util.*;
-import java.util.function.Predicate;
 
 public class Manager extends Employee {
     public void setType(Type type) {
@@ -39,7 +38,7 @@ public class Manager extends Employee {
     @Override
     public void update() {
         super.update();
-        switch (Util.pickView("Manager type",
+        switch (projectoop.Util.pickView("Manager type",
                 "Office Register",
                 "Department")) {
             case 1:
@@ -72,10 +71,12 @@ public class Manager extends Employee {
 
     @Override
     public boolean view() {
-        switch (Util.pickView("action",
+        System.out.println(toString());
+        switch (projectoop.Util.pickView("action",
                 "View registrations",
                 "Create report",
                 "Manage news",
+                "Create course",
                 "Exit")) {
             case 1:
                 viewRegistrations();
@@ -87,6 +88,9 @@ public class Manager extends Employee {
                 manageNews();
                 break;
             case 4:
+                createCourse();
+                break;
+            case 5:
                 return false;
             default:
                 break;
@@ -94,8 +98,12 @@ public class Manager extends Employee {
         return true;
     }
 
+    private void createCourse() {
+        StorageSingletone.getInstance().addCourse(Course.create());
+    }
+
     private void manageNews() {
-        switch (Util.pickView("action",
+        switch (projectoop.Util.pickView("action",
                 "View news",
                 "Add news",
                 "Cancel")) {
@@ -115,13 +123,13 @@ public class Manager extends Employee {
 
     private void viewNews() {
         TreeSet<News> news = StorageSingletone.getInstance().getNews();
-        int num = Util.pickView(news, "news") - 1;
+        int num = projectoop.Util.pickView(news, "news") - 1;
         if (num < 0 || num >= news.size()) {
             System.out.println("Wrong input");
             return;
         }
-        News picked = (News) Util.getPicked(news, num);
-        switch (Util.pickView("action",
+        News picked = (News) projectoop.Util.getPicked(news, num);
+        switch (projectoop.Util.pickView("action",
                 "Remove",
                 "Cancel")) {
             case 1:
@@ -148,13 +156,13 @@ public class Manager extends Employee {
 
     private void viewRegistrations() {
         HashSet<Registration> registrations = StorageSingletone.getInstance().getRegistrations();
-        int num = Util.pickView(registrations, "registration") - 1;
+        int num = projectoop.Util.pickView(registrations, "registration") - 1;
         if (num < 0 || num >= registrations.size()) {
             System.out.println("Wrong input");
             return;
         }
-        Registration picked = (Registration) Util.getPicked(registrations, num);
-        switch (Util.pickView("action", "Accept",
+        Registration picked = (Registration) projectoop.Util.getPicked(registrations, num);
+        switch (projectoop.Util.pickView("action", "Accept",
                 "Reject",
                 "Cancel")) {
             case 1:
@@ -174,17 +182,7 @@ public class Manager extends Employee {
     }
 
     private void acceptRegistration(Registration picked) {
-        Object[] teachers =
-                StorageSingletone.getInstance().getTeachers().stream().filter(
-                        teacher -> (teacher.getCourses().contains(picked.getCourse()))
-                ).toArray();
-        int num = Util.pickView("teacher", teachers) - 1;
-        if (num < 0 || num >= teachers.length) {
-            System.out.println("Wrong input");
-            return;
-        }
-        Teacher pickedTeacher = (Teacher) teachers[num];
-        picked.acceptRegistration(pickedTeacher);
+        picked.acceptRegistration();
         StorageSingletone.getInstance().removeRegistration(picked);
     }
 }

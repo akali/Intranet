@@ -1,7 +1,6 @@
 package projectoop;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -98,9 +97,9 @@ public class News implements Serializable, Comparable<News> {
     }
 
     public static News create(Manager sender) {
-        Scanner sc = Util.getReadingScanner();
-        return new News(Util.askGet(sc, "Enter title: "),
-                Util.askGet(sc, "Enter text: "),
+        Util.Scanner sc = Util.getReadingScanner();
+        return new News(projectoop.Util.askGet(sc, "Enter title: "),
+                projectoop.Util.askGet(sc, "Enter text: "),
                 new Date(), sender);
     }
 }

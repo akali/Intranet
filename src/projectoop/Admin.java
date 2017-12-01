@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Admin extends Employee {
     StorageSingletone storage = StorageSingletone.getInstance();
     public void createEntity() {
-        int num = Util.pickView("entity",
+        int num = projectoop.Util.pickView("entity",
                 "Student",
                 "Teacher",
                 "Admin",
@@ -29,14 +29,14 @@ public class Admin extends Employee {
     }
 
     public void removeEntity() {
-        Scanner sc = Util.getReadingScanner();
+        projectoop.Util.Scanner sc = projectoop.Util.getReadingScanner();
         System.out.println("Enter login: ");
         String login = sc.next();
         storage.removeEntity(login);
     }
 
     public void updateEntity() throws UserNotFoundException {
-        Scanner sc = Util.getReadingScanner();
+        Util.Scanner sc = Util.getReadingScanner();
         System.out.println("Enter login: ");
         String login = sc.next();
         Person p = storage.getPerson(login);
@@ -62,8 +62,16 @@ public class Admin extends Employee {
     }
 
     @Override
+    public String toString() {
+        return "Admin{" +
+                "salary=" + salary +
+                "} " + super.toString();
+    }
+
+    @Override
     public boolean view() {
-        switch (Util.pickView("action",
+
+        switch (projectoop.Util.pickView("action",
                 "Create",
                 "Update",
                 "Delete",

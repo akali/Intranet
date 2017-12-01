@@ -37,8 +37,16 @@ public abstract class Person implements Serializable, Viewable, Interactive {
         return password;
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "login='" + login + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
     public void setPassword(String password) {
-        this.password = Util.hashIt(password);
+        this.password = projectoop.Util.hashIt(password);
     }
 
     @Override
@@ -63,7 +71,7 @@ public abstract class Person implements Serializable, Viewable, Interactive {
 
     @Override
     public Person create(Person s) {
-        Scanner sc = Util.getReadingScanner();
+        Util.Scanner sc = Util.getReadingScanner();
 
         System.out.println("Enter name: ");
         s.setName(sc.next());
@@ -76,14 +84,14 @@ public abstract class Person implements Serializable, Viewable, Interactive {
 
     @Override
     public void update() {
-        Scanner sc = Util.getReadingScanner();
+        Util.Scanner sc = Util.getReadingScanner();
 
         System.out.println("Enter desired name: ");
         String name = sc.next();
         setName(name);
         System.out.println("Enter desired password: ");
         String password = sc.next();
-        setPassword(Util.hashIt(password));
+        setPassword(projectoop.Util.hashIt(password));
     }
 
 }

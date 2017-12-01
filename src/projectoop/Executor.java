@@ -1,7 +1,5 @@
 package projectoop;
 
-import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Vector;
 
 public class Executor extends Employee {

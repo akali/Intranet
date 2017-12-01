@@ -23,6 +23,15 @@ public class Course implements Serializable {
         this.creditsNumber = creditsNumber;
     }
 
+    public static Course create() {
+        String name = Util.askGet(Util.getReadingScanner(), "Enter name");
+        String id = Util.askGet(Util.getReadingScanner(), "Enter id");
+        int creditsNumber = Integer.parseInt(Util.askGet(Util.getReadingScanner(), "Enter number of credits"));
+        HashSet<Teacher> teachers = StorageSingletone.getInstance().getTeachers();
+        int num = Util.pickView(teachers, "teacher") - 1;
+        return new Course(name, id, (Teacher) Util.getPicked(teachers, num), creditsNumber);
+    }
+
     public String getName() {
         return name;
     }
@@ -106,6 +115,19 @@ public class Course implements Serializable {
         result = 31 * result + (courseFiles != null ? courseFiles.hashCode() : 0);
         result = 31 * result + creditsNumber;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "name='" + name + '\'' +
+                ", id='" + id + '\'' +
+                ", teacher=" + teacher +
+                ", students=" + students +
+                ", prerequisites=" + prerequisites +
+                ", courseFiles=" + courseFiles +
+                ", creditsNumber=" + creditsNumber +
+                '}';
     }
 }
 

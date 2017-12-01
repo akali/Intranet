@@ -88,11 +88,11 @@ public class StorageSingletone implements Serializable {
 
     public void save() {
         System.out.println(instance);
-        Util.Serialize(instance, "save");
+        projectoop.Util.Serialize(instance, "save");
     }
     public static StorageSingletone load() {
         if (new File("save").exists())
-            return (StorageSingletone) Util.Deserialize("save");
+            return (StorageSingletone) projectoop.Util.Deserialize("save");
         return instance;
     }
 
@@ -148,5 +148,9 @@ public class StorageSingletone implements Serializable {
 
     public HashSet<Course> getCourses() {
         return courses;
+    }
+
+    public void addCourse(Course c) {
+        courses.add(c);
     }
 }

@@ -7,6 +7,36 @@ import java.util.*;
  * Created by aqali on 26.11.2017.
  */
 public class Util {
+    static class Scanner {
+        public BufferedReader reader;
+        public StringTokenizer tokenizer;
+
+        public Scanner(InputStream stream) {
+            reader = new BufferedReader(new InputStreamReader(stream), 32768);
+            tokenizer = null;
+        }
+
+        public String next() {
+            while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+                try {
+                    tokenizer = new StringTokenizer(reader.readLine());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            return tokenizer.nextToken();
+        }
+
+        public int nextInt() {
+            return Integer.parseInt(next());
+        }
+
+        public double nextDouble() {
+            return Double.parseDouble(next());
+        }
+    }
+    private static Scanner readingScanner = new Scanner(System.in);
+
     static int pickView(Collection vector, String name) {
         System.out.println("Pick " + name + "s");
         int cnt = 1;
@@ -35,7 +65,7 @@ public class Util {
             oout.writeObject(o);
             oout.close();
             fout.close();
-        } catch(Exception e) {
+        } catch(Exception ignored) {
 
         }
     }
@@ -47,13 +77,11 @@ public class Util {
             result = oin.readObject();
             oin.close();
             fis.close();
-        } catch(Exception e) {
+        } catch(Exception ignored) {
 
         }
         return result;
     }
-
-    private static Scanner readingScanner = new Scanner(System.in);
 
     public static Scanner getReadingScanner() {
         return readingScanner;

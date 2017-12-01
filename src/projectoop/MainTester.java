@@ -12,9 +12,9 @@ public class MainTester {
 
         System.out.println(storage);
 
-        // init();
+        init();
 
-        Scanner sc = Util.getReadingScanner();
+        Util.Scanner sc = Util.getReadingScanner();
 
         Person p = null;
         String login;
@@ -30,7 +30,7 @@ public class MainTester {
             }
             System.out.println("Wrong login/password");
         }
-
+        System.out.println(p.toString());
         while (p.view());
         System.out.println("Bye!");
         StorageSingletone.getInstance().save();
@@ -38,7 +38,20 @@ public class MainTester {
 
     private static void init() {
         Admin admin = new Admin();
-        admin.setPassword("123");
+        admin.setPassword("1");
+        Person student = new Student();
+        student.setPassword("1");
+        Person manager = new Manager();
+        manager.setPassword("1");
+        Executor executor = new Executor();
+        executor.setPassword("1");
+        Person teacher = new Teacher();
+        teacher.setPassword("1");
+
         System.out.println(StorageSingletone.getInstance().insertAndGenerateId(admin));
+        System.out.println(StorageSingletone.getInstance().insertAndGenerateId(student));
+        System.out.println(StorageSingletone.getInstance().insertAndGenerateId(manager));
+        System.out.println(StorageSingletone.getInstance().insertAndGenerateId(executor));
+        System.out.println(StorageSingletone.getInstance().insertAndGenerateId(teacher));
     }
 }
