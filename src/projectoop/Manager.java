@@ -77,6 +77,7 @@ public class Manager extends Employee {
                 "Create report",
                 "Manage news",
                 "Create course",
+                "Send order",
                 "Exit")) {
             case 1:
                 viewRegistrations();
@@ -89,6 +90,9 @@ public class Manager extends Employee {
                 break;
             case 4:
                 createCourse();
+                break;
+            case 6:
+                sendOrder(Order.create(this));
                 break;
             case 5:
                 return false;

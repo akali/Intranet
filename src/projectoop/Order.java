@@ -11,10 +11,10 @@ public class Order implements Serializable {
     private String message;
     private Type type = Type.PENDING;
 
-    public static Order create(Teacher teacher) {
+    public static Order create(Employee employee) {
         Util.Scanner sc = Util.getReadingScanner();
         String message = Util.askGet(sc, "Enter message: ");
-        return new Order(teacher, message);
+        return new Order(employee, message);
     }
 
     enum Type {

@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05d252ae-b10a-4e6e-a938-40312378394c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/projectoop/CreditsNumberExceededException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/projectoop/FacultyMismatchException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/projectoop/Konst.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/projectoop/Department.java" afterPath="$PROJECT_DIR$/src/projectoop/Faculty.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/projectoop/Course.java" afterPath="$PROJECT_DIR$/src/projectoop/Course.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/projectoop/CourseFile.java" afterPath="$PROJECT_DIR$/src/projectoop/CourseFile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/projectoop/Employee.java" afterPath="$PROJECT_DIR$/src/projectoop/Employee.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/projectoop/Manager.java" afterPath="$PROJECT_DIR$/src/projectoop/Manager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/projectoop/Student.java" afterPath="$PROJECT_DIR$/src/projectoop/Student.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/projectoop/Teacher.java" afterPath="$PROJECT_DIR$/src/projectoop/Teacher.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/projectoop/Order.java" afterPath="$PROJECT_DIR$/src/projectoop/Order.java" />
     </list>
     <ignored path="projOOP.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Teacher.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Teacher.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/projectoop/Teacher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+            <state relative-caret-position="424">
+              <caret line="153" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#290#291#0" expanded="true" />
@@ -72,9 +66,21 @@
       <file leaf-file-name="Manager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/projectoop/Manager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="17">
+              <caret line="94" column="16" lean-forward="false" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Order.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/projectoop/Order.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -109,12 +115,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Employee.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Employee.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/projectoop/Employee.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
-              <folding />
+            <state relative-caret-position="255">
+              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding>
+                <element signature="e#355#356#0" expanded="true" />
+                <element signature="e#418#419#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -127,19 +136,6 @@
               <folding>
                 <element signature="e#1278#1279#0" expanded="true" />
                 <element signature="e#1308#1309#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Course.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/projectoop/Course.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="135" column="11" lean-forward="true" selection-start-line="135" selection-start-column="11" selection-end-line="135" selection-end-column="11" />
-              <folding>
-                <element signature="e#4340#4341#0" expanded="true" />
-                <element signature="e#4370#4371#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -189,7 +185,6 @@
       <find>view(</find>
       <find>student</find>
       <find>view</find>
-      <find>view()</find>
       <find>init()</find>
       <find>toString</find>
       <find>create</find>
@@ -201,6 +196,7 @@
       <find>addCourse</find>
       <find>Cour</find>
       <find>courseFile</find>
+      <find>view()</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -245,13 +241,11 @@
         <option value="$PROJECT_DIR$/src/projectoop/Transcript.java" />
         <option value="$PROJECT_DIR$/src/projectoop/Util.java" />
         <option value="$PROJECT_DIR$/src/projectoop/News.java" />
-        <option value="$PROJECT_DIR$/src/projectoop/Order.java" />
         <option value="$PROJECT_DIR$/src/projectoop/Specialty.java" />
         <option value="$PROJECT_DIR$/src/projectoop/DEGREE.java" />
         <option value="$PROJECT_DIR$/src/projectoop/Degree.java" />
         <option value="$PROJECT_DIR$/src/projectoop/StorageSingletone.java" />
         <option value="$PROJECT_DIR$/src/projectoop/Admin.java" />
-        <option value="$PROJECT_DIR$/src/projectoop/Employee.java" />
         <option value="$PROJECT_DIR$/src/projectoop/Person.java" />
         <option value="$PROJECT_DIR$/src/projectoop/MainTester.java" />
         <option value="$PROJECT_DIR$/src/projectoop/Department.java" />
@@ -262,9 +256,11 @@
         <option value="$PROJECT_DIR$/src/projectoop/Student.java" />
         <option value="$PROJECT_DIR$/src/projectoop/Konst.java" />
         <option value="$PROJECT_DIR$/src/projectoop/CreditsNumberExceededException.java" />
-        <option value="$PROJECT_DIR$/src/projectoop/Manager.java" />
         <option value="$PROJECT_DIR$/src/projectoop/CourseFile.java" />
         <option value="$PROJECT_DIR$/src/projectoop/Teacher.java" />
+        <option value="$PROJECT_DIR$/src/projectoop/Order.java" />
+        <option value="$PROJECT_DIR$/src/projectoop/Employee.java" />
+        <option value="$PROJECT_DIR$/src/projectoop/Manager.java" />
       </list>
     </option>
   </component>
@@ -308,6 +304,17 @@
             <path>
               <item name="projOOP" type="b2602c69:ProjectViewProjectNode" />
               <item name="OOPProject" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projOOP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OOPProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projOOP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OOPProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="projectoop" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -609,16 +616,15 @@
       <option name="presentableId" value="Default" />
       <updated>1511683943953</updated>
       <workItem from="1512037046819" duration="26674000" />
-      <workItem from="1512106332788" duration="6295000" />
+      <workItem from="1512106332788" duration="7120000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32969000" />
+    <option name="totallyTimeSpent" value="33794000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -633,7 +639,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23524962" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23524962" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730263" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -832,16 +838,6 @@
         <state relative-caret-position="306">
           <caret line="25" column="37" lean-forward="false" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/projectoop/Order.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1048,10 +1044,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/projectoop/Employee.java">
+    <entry file="file://$PROJECT_DIR$/src/projectoop/FacultyMismatchException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+        <state relative-caret-position="34">
+          <caret line="2" column="33" lean-forward="false" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -1072,31 +1068,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/projectoop/FacultyMismatchException.java">
+    <entry file="file://$PROJECT_DIR$/src/projectoop/Order.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="33" lean-forward="false" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
-          <folding />
+        <state relative-caret-position="194">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/projectoop/Manager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state relative-caret-position="17">
+          <caret line="94" column="16" lean-forward="false" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/projectoop/Student.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="209" column="5" lean-forward="true" selection-start-line="209" selection-start-column="5" selection-end-line="209" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6247#6248#0" expanded="true" />
-            <element signature="e#6277#6278#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1119,10 +1105,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/projectoop/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="209" column="5" lean-forward="true" selection-start-line="209" selection-start-column="5" selection-end-line="209" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6247#6248#0" expanded="true" />
+            <element signature="e#6277#6278#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/projectoop/Teacher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+        <state relative-caret-position="424">
+          <caret line="153" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#290#291#0" expanded="true" />
@@ -1131,6 +1129,17 @@
             <element signature="e#1223#1224#0" expanded="true" />
             <element signature="e#4258#4259#0" expanded="true" />
             <element signature="e#4317#4318#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/projectoop/Employee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <element signature="e#355#356#0" expanded="true" />
+            <element signature="e#418#419#0" expanded="true" />
           </folding>
         </state>
       </provider>

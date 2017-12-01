@@ -1,7 +1,5 @@
 package projectoop;
 
-import java.util.Scanner;
-
 public abstract class Employee extends Person implements Comparable<Employee> {
     protected double salary;
 
@@ -11,6 +9,10 @@ public abstract class Employee extends Person implements Comparable<Employee> {
     }
 
     public Employee() {}
+
+    protected void sendOrder(Order order) {
+        StorageSingletone.getInstance().addOrder(order);
+    }
 
     public double getSalary() {
         return salary;
